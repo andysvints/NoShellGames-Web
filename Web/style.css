@@ -1,0 +1,243 @@
+body {
+    background: #f5f6f8;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #111;
+}
+
+.container {
+    max-width: 860px;
+    margin: 60px auto;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    text-align: center;
+}
+
+.title {
+    font-size: 38px;
+    font-weight: 750;
+    letter-spacing: 0.4px;
+    margin: 0 0 8px;
+}
+
+.logo-placeholder {
+    font-size: 28px;
+    margin: 10px 0 6px;
+    opacity: 0.85;
+}
+
+.tagline {
+    font-size: 16px;
+    color: #444;
+    margin: 8px 0;
+}
+
+.subtext {
+    font-size: 14px;
+    color: #777;
+    margin: 0 0 24px;
+}
+
+.editor {
+    width: 100%;
+    height: 260px;
+    padding: 16px;
+    box-sizing: border-box;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.55;
+    border-radius: 12px;
+    border: 1px solid #2f2f2f;
+    outline: none;
+    resize: vertical;
+    background: #1e1e1e;
+    color: #e8e8e8;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    caret-color: #7ee787;
+}
+
+.editor::placeholder {
+    color: #8a8a8a;
+}
+
+.editor:focus {
+    border-color: #4b5563;
+    box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.08);
+}
+
+.analyze-btn {
+    margin-top: 20px;
+    padding: 13px 28px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    background: #111;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.analyze-btn:hover {
+    background: #2a2a2a;
+    transform: translateY(-1px);
+}
+
+.analyze-btn:active {
+    transform: translateY(0);
+}
+
+.analyze-btn:disabled {
+    background: #7a7a7a;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Loading */
+.loading-state {
+    margin-top: 26px;
+    padding: 22px 18px;
+    border-radius: 14px;
+    background: #f9fafb;
+    border: 1px solid #eceff3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.spinner {
+    width: 34px;
+    height: 34px;
+    border: 3px solid #d7dbe1;
+    border-top-color: #111;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.loading-text {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Result card */
+.result-card {
+    margin-top: 28px;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid #eceff3;
+    background: #fbfcfd;
+    text-align: left;
+    animation: fadeUp 0.22s ease;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eceff3;
+}
+
+.result-label {
+    margin: 0 0 6px;
+    font-size: 13px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.risk-score {
+    margin: 0;
+    font-size: 36px;
+    line-height: 1;
+    font-weight: 800;
+}
+
+.risk-badge {
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+.risk-badge.low {
+    background: #e8f7ee;
+    color: #116329;
+}
+
+.risk-badge.medium {
+    background: #fff4dd;
+    color: #8a5a00;
+}
+
+.risk-badge.high {
+    background: #fde8e8;
+    color: #b42318;
+}
+
+.result-section {
+    margin-top: 18px;
+}
+
+.result-section h3 {
+    margin: 0 0 10px;
+    font-size: 16px;
+}
+
+.findings-list {
+    margin: 0;
+    padding-left: 20px;
+    color: #222;
+}
+
+.findings-list li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.recommendation {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.recommendation.safe {
+    color: #116329;
+}
+
+.recommendation.warn {
+    color: #8a5a00;
+}
+
+.recommendation.danger {
+    color: #b42318;
+}
