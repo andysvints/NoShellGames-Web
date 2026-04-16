@@ -1,1 +1,47 @@
-test
+<div class="container">
+    <h1 class="title">NoShellGames</h1>
+
+    <div class="logo-placeholder"> LOGO </div>
+
+    <p class="tagline">No Games. No Threats. Just Clean Shell.</p>
+    <p class="subtext">Instantly assess if a script is safe to run.</p>
+
+    <textarea
+        id="scriptInput"
+        class="editor"
+        placeholder="Paste your PowerShell script here..."
+    ></textarea>
+
+    <button id="analyzeBtn" class="analyze-btn">Analyze Risk</button>
+
+    <div id="loadingState" class="loading-state hidden">
+        <div class="spinner"></div>
+        <p class="loading-text">Analyzing script risk...</p>
+    </div>
+
+    <div id="resultCard" class="result-card hidden">
+        <div class="result-header">
+            <div>
+                <p class="result-label">Risk Score</p>
+                <h2 id="riskScore" class="risk-score">82</h2>
+            </div>
+            <div class="risk-badge high" id="riskLevel">HIGH</div>
+        </div>
+
+        <div class="result-section">
+            <h3>Top Findings</h3>
+            <ul id="findingsList" class="findings-list">
+                <li>Invoke-Expression detected — dynamic code execution risk</li>
+                <li>Web request usage detected — potential remote payload</li>
+                <li>Base64 decoding detected — possible obfuscation</li>
+            </ul>
+        </div>
+
+        <div class="result-section">
+            <h3>Recommendation</h3>
+            <p id="recommendationText" class="recommendation danger">
+                Do NOT run on production endpoints
+            </p>
+        </div>
+    </div>
+</div>
