@@ -21,6 +21,7 @@ function Invoke-ScriptAnalysis
             connect-AzAccount -Subscription "094200e5-c0b6-4890-aeec-5a21a93a690e" -Identity | Out-Null
             $KeyVaultName="NoShellGames-KV"
             $apiKey=Get-AzKeyVaultSecret -VaultName $KeyVaultName -Name "NoShellGamesAPIKey" -AsPlainText
+            $HTMLTemplate=Get-Content $(Join-Path -Path "/usr/local/share/powershell/Modules/Web" -ChildPath "index.html") -Raw
           #TO DO
         }
     }
