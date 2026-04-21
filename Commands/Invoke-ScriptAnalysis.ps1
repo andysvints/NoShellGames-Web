@@ -23,6 +23,31 @@ function Invoke-ScriptAnalysis
             $apiKey=Get-AzKeyVaultSecret -VaultName $KeyVaultName -Name "NoShellGamesAPIKey" -AsPlainText
             $HTMLTemplate=Get-Content $(Join-Path -Path "/usr/local/share/powershell/Modules/Web" -ChildPath "index.html") -Raw
           #TO DO
+          <#
+                      <div class="result-header">
+            <div>
+                <p class="result-label">Risk Score</p>
+                <h2 id="riskScore" class="risk-score">82</h2>
+            </div>
+            <div class="risk-badge high" id="riskLevel">HIGH</div>
+        </div>
+
+        <div class="result-section">
+            <h3>Top Findings</h3>
+            <ul id="findingsList" class="findings-list">
+                <li>Invoke-Expression detected — dynamic code execution risk</li>
+                <li>Web request usage detected — potential remote payload</li>
+                <li>Base64 decoding detected — possible obfuscation</li>
+            </ul>
+        </div>
+
+        <div class="result-section">
+            <h3>Recommendation</h3>
+            <p id="recommendationText" class="recommendation danger">
+                Do NOT run on production endpoints
+            </p>
+        </div>
+          #>
         }
     }
     End
