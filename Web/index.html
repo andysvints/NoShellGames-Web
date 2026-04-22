@@ -9,14 +9,14 @@
 
     <p class="tagline">No Games. No Threats. Just Clean Shell.</p>
     <p class="subtext">Instantly assess if a script is safe to run.</p>
-
+     
     <textarea
         id="scriptInput"
         class="editor"
         placeholder="Paste your PowerShell script here..."
     ></textarea>
 
-    <button id="analyzeBtn" class="analyze-btn">Analyze Risk</button>
+    <button id="analyzeBtn" type="submit" formaction="/analyze" class="analyze-btn">Analyze Risk</button>
 
     <div id="loadingState" class="loading-state hidden">
         <div class="spinner"></div>
