@@ -9,15 +9,16 @@
 
     <p class="tagline">No Games. No Threats. Just Clean Shell.</p>
     <p class="subtext">Instantly assess if a script is safe to run.</p>
+    <form id="search-form" action="/analyze" method="GET"> 
+         <textarea
+             id="scriptInput"
+             class="editor"
+             placeholder="Paste your PowerShell script here..."
+         >
+         </textarea>
+         <button id="analyzeBtn" type="submit" class="analyze-btn">Analyze Risk</button>
+    </form>
      
-    <textarea
-        id="scriptInput"
-        class="editor"
-        placeholder="Paste your PowerShell script here..."
-    ></textarea>
-
-    <button id="analyzeBtn" type="submit" formaction="/analyze" class="analyze-btn">Analyze Risk</button>
-
     <div id="loadingState" class="loading-state hidden">
         <div class="spinner"></div>
         <p class="loading-text">Analyzing script risk...</p>
