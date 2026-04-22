@@ -82,7 +82,16 @@ Register-EngineEvent -SourceIdentifier HTTP.Request -Action {
             $response.Close()
             return
         }
-
+        if ($request.Url.LocalPath -eq '/analyze' -and $request.HttpMethod -eq 'GET') {
+            $html  = Invoke-ScriptAnalysis -Text $($request.Body)
+            $bytes = [Text.Encoding]::UTF8.GetBytes($html)
+            $response.StatusCode = 200
+            $response.ContentType = 'text/html; charset=utf-8'
+            $response.ContentLength64 = $bytes.Length
+            $response.OutputStream.Write($bytes, 0, $bytes.Length)
+            $response.Close()
+            return
+        }
         
         # Handle static file serving
         $localPath = $request.Url.LocalPath.TrimStart('/')
