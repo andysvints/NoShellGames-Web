@@ -72,7 +72,7 @@ Register-EngineEvent -SourceIdentifier HTTP.Request -Action {
     $request, $response = $context.Request, $context.Response
     # Do everything from here on in a try/catch block, so errors don't hurt the server.
     try {
-        Import-Module PSGalleryModuleScore
+        Import-Module NoShellGames-Web
         $IndexPageHTML=Get-Content $(Join-Path -Path "$PSScriptRoot\Web" -ChildPath "index.html")
 
         
