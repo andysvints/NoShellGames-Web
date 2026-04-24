@@ -26,7 +26,7 @@ function Invoke-ScriptAnalysis
             $HTMLTemplate=Get-Content $(Join-Path -Path "/usr/local/share/powershell/Modules/NoShellGames-Web/Web" -ChildPath "index.html") -Raw
             $HTMLResults=[System.Text.StringBuilder]::new()
             if($apiResponse){
-                $htmlResponse=$HTMLTemplate.Replace('<ResultsTemplate>',"TEST")
+                $htmlResponse=$HTMLTemplate.Replace('<ResultsTemplate>','TEST')
             }
           #TO DO
           <#
