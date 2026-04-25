@@ -13,7 +13,7 @@ ARG InstallModules="Az.KeyVault,Az.Accounts"
 # RUN apt-get update && apt-get install -y $InstallAptPackages && apt-get clean
 
 # Copy the module into the container
-COPY . /usr/local/share/powershell/Modules/$ModuleName
+COPY . ./usr/local/share/powershell/Modules/$ModuleName
 
 # Set an environment variable to indicate we are in a container
 ENV IN_CONTAINER=true
