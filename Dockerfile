@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/powershell
 
 # Set the module name to the name of the module we are building
 #Module name ??? Create PS wrapper around it?
-ARG ModuleName=NoShellGames-Web
+ARG ModuleName="NoShellGames-Web"
 # InstallAptPackages determines additional packages to install
 # ARG InstallAptPackages=git curl ca-certificates libc6 libgcc1
 # InstallModules determines additional modules to install
