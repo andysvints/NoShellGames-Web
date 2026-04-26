@@ -22,7 +22,7 @@ function Invoke-ScriptAnalysis
             $KeyVaultName="NoShellGames-KV"
             $apiKey=Get-AzKeyVaultSecret -VaultName $KeyVaultName -Name "NoShellGamesAPIKey" -AsPlainText
             $apiUrl = "https://noshellgames.azure-api.net/noshellgames/AnalyzeScript?subscription-key=$apiKey"
-            $apiResponse = Invoke-RestMethod -Uri $apiUrl
+            $apiResponse = Invoke-RestMethod -Uri $apiUrl -Body $Text -Method POST
             $HTMLTemplate=Get-Content $(Join-Path -Path "/usr/local/share/powershell/Modules/NoShellGames-Web/Web" -ChildPath "index.html") -Raw
             $HTMLResults=[System.Text.StringBuilder]::new()
             if($apiResponse){
