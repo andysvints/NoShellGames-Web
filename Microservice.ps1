@@ -82,8 +82,13 @@ Register-EngineEvent -SourceIdentifier HTTP.Request -Action {
             $response.Close()
             return
         }
-        if ($request.Url.LocalPath -eq '/analyze' -and $request.HttpMethod -eq 'GET') {
-            $html  = Invoke-ScriptAnalysis -Text $($request.Body)
+        if ($request.Url.LocalPath -eq '/analyze' -and $request.HttpMethod -eq 'POST') {
+            $reader = [System.IO.StreamReader]::new($request.InputStream, $request.ContentEncoding)
+            $body = $reader.ReadToEnd()
+            $reader.Close()
+            $parsed = [System.Web.HttpUtility]::ParseQueryString($body)
+            $scriptText = $parsed['scriptText']
+            $html  = Invoke-ScriptAnalysis -Text $scriptText
             $bytes = [Text.Encoding]::UTF8.GetBytes($html)
             $response.StatusCode = 200
             $response.ContentType = 'text/html; charset=utf-8'
