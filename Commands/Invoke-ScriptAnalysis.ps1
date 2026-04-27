@@ -27,7 +27,7 @@ function Invoke-ScriptAnalysis
             #$HTMLResults=[System.Text.StringBuilder]::new()
             $HTMLTemplate=@"
             TEST
-@"
+"@
             if($apiResponse){
                 #$htmlResponse=$HTMLTemplate.Replace('<ResultsTemplate>','TEST')
                 $htmlResponse=$HTMLTemplate
