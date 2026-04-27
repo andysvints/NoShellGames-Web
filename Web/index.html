@@ -21,4 +21,36 @@
           <ResultsTemplate>
     </div>
 </div>
+<script>
+document.getElementById("search-form").addEventListener("submit", async function(e) {
+    e.preventDefault(); 
+
+    const scriptText = document.getElementById("scriptInput").value;
+    const loading = document.getElementById("loadingState");
+    const resultCard = document.getElementById("resultCard");
+     
+    loading.classList.remove("hidden");
+    resultCard.classList.add("hidden");
+
+    try {
+        const response = await fetch("/analyze", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `scriptInput=${encodeURIComponent(scriptText)}`
+        });
+
+        const html = await response.text();
+        resultCard.innerHTML = html;
+        resultCard.classList.remove("hidden");
+
+    } catch (err) {
+        resultCard.innerHTML = "<p style='color:red'>Error analyzing script</p>";
+        resultCard.classList.remove("hidden");
+    } finally {
+        loading.classList.add("hidden");
+    }
+});
+</script>
 </html>
