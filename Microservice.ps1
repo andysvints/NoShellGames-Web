@@ -87,7 +87,7 @@ Register-EngineEvent -SourceIdentifier HTTP.Request -Action {
             $body = $reader.ReadToEnd()
             $reader.Close()
             $parsed = [System.Web.HttpUtility]::ParseQueryString($body)
-            $scriptText = $parsed['scriptText']
+            $scriptText = $parsed['scriptInput']
             $html  = Invoke-ScriptAnalysis -Text $scriptText
             $bytes = [Text.Encoding]::UTF8.GetBytes($html)
             $response.StatusCode = 200
