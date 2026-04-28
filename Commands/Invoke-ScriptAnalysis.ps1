@@ -31,7 +31,7 @@ function Invoke-ScriptAnalysis
                 <p class="result-label">Risk Score</p>
                 <h2 id="riskScore" class="risk-score"><RiskScore></h2>
             </div>
-            <div class="risk-badge high" id="riskLevel"><RiskLevel></div>
+            <div class="risk-badge <RiskLevel>" id="riskLevel"><RiskLevel></div>
         </div>
         <TopFindings>
         <div class="result-section">
