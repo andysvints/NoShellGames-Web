@@ -29,33 +29,37 @@ function Invoke-ScriptAnalysis
              <div class="result-header">
             <div>
                 <p class="result-label">Risk Score</p>
-                <h2 id="riskScore" class="risk-score">82</h2>
+                <h2 id="riskScore" class="risk-score"><RiskScore></h2>
             </div>
-            <div class="risk-badge high" id="riskLevel">HIGH</div>
+            <div class="risk-badge high" id="riskLevel"><RiskLevel></div>
         </div>
-
-        <div class="result-section">
-            <h3>Top Findings</h3>
-            <ul id="findingsList" class="findings-list">
-                <li>Invoke-Expression detected — dynamic code execution risk</li>
-                <li>Web request usage detected — potential remote payload</li>
-                <li>Base64 decoding detected — possible obfuscation</li>
-            </ul>
-        </div>
-
+        <TopFindings>
         <div class="result-section">
             <h3>Recommendation</h3>
             <p id="recommendationText" class="recommendation danger">
-                Do NOT run on production endpoints
+                <Recommendation>
             </p>
         </div>
     </div>
 "@
             if($apiResponse){
-                #$htmlResponse=$HTMLTemplate.Replace('<ResultsTemplate>','TEST')
-                $htmlResponse=$HTMLTemplate
+                $htmlResponse=$HTMLTemplate.Replace('<RiskScore>',$apiResponse.risk_score)
+                $htmlResponse=$htmlResponse.Replace('<RiskLevel>',$apiResponse.risk_level)
+                if($apiResponse.top_findings){
+                    $TopFindings=@"
+                    <div class="result-section">
+            <h3>Top Findings</h3>
+            <ul id="findingsList" class="findings-list">          
+"@
+                    foreach($f in $apiResponse.top_findings){
+                        $TopFindings+="<li>"+$f+"</li>"
+                    }
+                    $TopFindings+="</ul></div>"
+                    $htmlResponse=$htmlResponse.Replace('<TopFindings>',$TopFindings)
+                }
+                $htmlResponse=$htmlResponse.Replace('<Recommendation>',$apiResponse.recommendation)
             }
-          #TO DO
+
         
 
           return $htmlResponse
