@@ -22,13 +22,15 @@
     </div>
 </div>
 <script>
+const button = document.getElementById("analyzeBtn");
 document.getElementById("search-form").addEventListener("submit", async function(e) {
     e.preventDefault(); 
 
     const scriptText = document.getElementById("scriptInput").value;
     const loading = document.getElementById("loadingState");
     const resultCard = document.getElementById("resultCard");
-     
+
+    button.disabled = true; 
     loading.classList.remove("hidden");
     resultCard.classList.add("hidden");
 
@@ -49,6 +51,7 @@ document.getElementById("search-form").addEventListener("submit", async function
         resultCard.innerHTML = "<p style='color:red'>Error analyzing script</p>";
         resultCard.classList.remove("hidden");
     } finally {
+        button.disabled = false; 
         loading.classList.add("hidden");
     }
 });
