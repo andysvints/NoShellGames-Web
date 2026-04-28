@@ -230,14 +230,14 @@ body {
     font-weight: 600;
 }
 
-.recommendation.safe {
+.recommendation.low {
     color: #116329;
 }
 
-.recommendation.warn {
+.recommendation.medium {
     color: #8a5a00;
 }
 
-.recommendation.danger {
+.recommendation.high {
     color: #b42318;
 }
