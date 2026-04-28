@@ -36,7 +36,7 @@ function Invoke-ScriptAnalysis
         <TopFindings>
         <div class="result-section">
             <h3>Recommendation</h3>
-            <p id="recommendationText" class="recommendation danger">
+            <p id="recommendationText" class="recommendation <RiskLevel>">
                 <Recommendation>
             </p>
         </div>
