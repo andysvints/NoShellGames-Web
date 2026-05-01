@@ -101,10 +101,11 @@ Register-EngineEvent -SourceIdentifier HTTP.Request -Action {
         # Handle static file serving
         $localPath = $request.Url.LocalPath.TrimStart('/')
         if ([string]::IsNullOrEmpty($localPath)) {
-            
             $localPath = "index.html"  # Default to index.html if no specific file is requested
         }
         $filePath = Join-Path -Path "$PSScriptRoot\Web" -ChildPath $localPath
+        $IndexPageHTML=Get-Content $filePath
+        $IndexPageHTML.Replace("<CurrentYear>",$((Get-Date).Year))| Out-file $filePath -Force
         
         # If the request is for the root, return home page.
         if (Test-Path $filePath) {
