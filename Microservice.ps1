@@ -104,14 +104,17 @@ Register-EngineEvent -SourceIdentifier HTTP.Request -Action {
             $localPath = "index.html"  # Default to index.html if no specific file is requested
         }
         $filePath = Join-Path -Path "$PSScriptRoot\Web" -ChildPath $localPath
-        $IndexPageHTML=Get-Content $filePath
-        $IndexPageHTML.Replace("<CurrentYear>",$((Get-Date).Year))| Out-file $filePath -Force
+        
         
         # If the request is for the root, return home page.
         if (Test-Path $filePath) {
             $ext = [IO.Path]::GetExtension($filePath).ToLowerInvariant()
             if ($ext -eq '.svg' -or $ext -eq '.svgz') {
                 $response.ContentType = 'image/svg+xml'
+            }
+            if($localpath -eq "index.html"){
+                $IndexPageHTML=Get-Content $filePath
+                $IndexPageHTML.Replace("<CurrentYear>",$((Get-Date).Year))| Out-file $filePath -Force
             }
             $outputBuffer=[System.IO.File]::ReadAllBytes($filePath)
             $response.OutputStream.Write($outputBuffer, 0, $outputBuffer.Length)
