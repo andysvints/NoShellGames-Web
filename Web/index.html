@@ -12,6 +12,80 @@
         <input class="info-control" type="radio" name="info-toggle" id="toggle-checks">
         <input class="info-control" type="radio" name="info-toggle" id="toggle-output">
         <input class="info-control" type="radio" name="info-toggle" id="toggle-examples">
+          
+       <div class="info-buttons">
+          <label class="info-btn" for="toggle-checks">What it checks</label>
+          <label class="info-btn" for="toggle-output">What you get</label>
+          <label class="info-btn" for="toggle-examples">Examples</label>
+        </div>
+
+          <div class="info-panels">
+          <div class="info-panel checks-panel">
+            <div class="info-panel-header">
+              <h2>What NoShellGames checks</h2>
+              <label class="panel-close" for="toggle-none">Close</label>
+            </div>
+
+            <p>NoShellGames performs static analysis of PowerShell scripts and highlights suspicious patterns that may deserve manual review.</p>
+
+            <div class="info-grid">
+              <span>Base64 encoded content</span>
+              <span>Recursive decoding</span>
+              <span>Invoke-Expression usage</span>
+              <span>ScriptBlock creation</span>
+              <span>Obfuscated variable names</span>
+              <span>Character casting</span>
+              <span>Add-Type usage</span>
+              <span>Web requests</span>
+              <span>WMI usage</span>
+            </div>
+          </div>
+
+               <div class="info-panel output-panel">
+            <div class="info-panel-header">
+              <h2>What you get</h2>
+              <label class="panel-close" for="toggle-none">Close</label>
+            </div>
+
+            <p>The analyzer returns risk signals that help you understand what deserves a closer look before running a script.</p>
+
+            <ul>
+              <li>Overall risk level</li>
+              <li>Matched detection rules</li>
+              <li>Suspicious findings and explanations</li>
+              <li>Decoded content when available</li>
+              <li>Practical review guidance</li>
+            </ul>
+
+            <p class="info-note">NoShellGames does not execute submitted scripts and does not certify that a script is safe or malicious.</p>
+
+            <a class="early-access-link"
+              href="https://#"
+              target="_blank"
+              rel="noopener noreferrer">
+              Request Early Access
+            </a>
+          </div>
+
+          <div class="info-panel examples-panel">
+            <div class="info-panel-header">
+              <h2>Examples</h2>
+              <label class="panel-close" for="toggle-none">Close</label>
+            </div>
+
+            <p>Try NoShellGames with safe demo scripts. Clicking an example adds it to the editor and triggers a scoring preview.</p>
+
+            <div class="example-list">
+              <button type="button" class="example-btn" data-example="harmless">Harmless script</button>
+              <button type="button" class="example-btn" data-example="encoded">Encoded string demo</button>
+              <button type="button" class="example-btn" data-example="webrequest">Web request demo</button>
+              <button type="button" class="example-btn" data-example="obfuscation">Obfuscation demo</button>
+            </div>
+
+            <p class="info-note">Examples use safe demo content only and are meant to demonstrate the reporting format.</p>
+          </div>
+        </div>
+          
      </section>
     <form id="search-form" action="/analyze" method="POST"> 
          <textarea id="scriptInput" name="scriptInput" class="editor" placeholder="Paste your PowerShell script here..."></textarea>
