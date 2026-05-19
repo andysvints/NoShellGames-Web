@@ -243,6 +243,46 @@ body {
 }
 
 .info-section {
+  margin: 0 0 20px;
+}
+
+.info-control {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.info-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 14px;
+}
+
+.info-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #111;
+  background: #fff;
+  border: 1px solid #111;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.info-btn:hover {
+  background: #f5f5f5;
+  transform: translateY(-1px);
+}
+
+.info-section {
       margin-bottom: 6px;
       font-size: 14px;
       line-height: 1.45;
