@@ -344,3 +344,21 @@ body {
       background: #111;
       transform: translateY(-1px);
     }
+
+#toggle-checks:checked ~ .info-buttons label[for="toggle-checks"],
+#toggle-output:checked ~ .info-buttons label[for="toggle-output"],
+#toggle-examples:checked ~ .info-buttons label[for="toggle-examples"] {
+  color: #fff;
+  background: #111;
+}
+
+#toggle-checks:checked ~ .info-panels .checks-panel,
+#toggle-output:checked ~ .info-panels .output-panel,
+#toggle-examples:checked ~ .info-panels .examples-panel {
+  max-height: 640px;
+  opacity: 1;
+  padding: 18px;
+  margin: 0 0 18px;
+  border: 1px solid #eceff3;
+  transform: translateY(0);
+}
