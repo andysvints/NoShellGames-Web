@@ -242,6 +242,10 @@ body {
     color: #b42318;
 }
 
+.info-section {
+    margin: 0 0 20px;
+}
+
 .info-buttons {
     display: flex;
     justify-content: center;
