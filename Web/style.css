@@ -254,3 +254,16 @@ body {
     flex-wrap: wrap;
     margin: 0 0 14px;
 }
+
+.info-item {
+    position: relative;
+}
+
+.info-item summary {
+    list-style: none;
+}
+
+.info-item summary::-webkit-details-marker {
+    display: none;
+}
+
