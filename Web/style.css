@@ -329,3 +329,38 @@ body {
     font-size: 14px;
     line-height: 1.45;
 }
+
+.info-grid,
+.example-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.info-grid span,
+.example-btn {
+    padding: 7px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #222;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 999px;
+}
+
+.example-btn {
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.example-btn:hover {
+    color: #fff;
+    background: #111;
+    border-color: #111;
+}
+
+.info-note {
+    color: #666 !important;
+    font-size: 13px !important;
+}
