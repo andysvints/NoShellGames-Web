@@ -242,3 +242,11 @@ body {
     color: #b42318;
 }
 
+.info-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 0 0 14px;
+}
