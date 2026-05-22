@@ -247,18 +247,19 @@ body {
     margin: 0 0 20px;
 }
 
+
 .info-buttons {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 24px;
-    row-gap: 16px;
+    --info-button-width: 142px;
+    --info-button-gap: 12px;
+
+    position: relative;
     width: 100%;
-    margin: 0 auto 18px;
-    align-items: start;
+    padding-top: 58px;
+    margin: 0;
 }
 
 .info-item {
-    display: contents;
+    width: 100%;
 }
 
 .info-item summary {
@@ -269,28 +270,17 @@ body {
     display: none;
 }
 
-.info-item:nth-child(1) > .info-btn {
-    grid-column: 1;
-    grid-row: 1;
-}
 
-.info-item:nth-child(2) > .info-btn {
-    grid-column: 2;
-    grid-row: 1;
-}
-
-.info-item:nth-child(3) > .info-btn {
-    grid-column: 3;
-    grid-row: 1;
-}
 
 .info-btn {
+    position: absolute;
+    top: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    justify-self: center;
-    width: 180px;
-    padding: 13px 16px;
+    width: var(--info-button-width);
+    min-height: 40px;
+    padding: 10px 12px;
     box-sizing: border-box;
     font-size: 13px;
     font-weight: 700;
@@ -302,16 +292,22 @@ body {
     transition: all 0.18s ease;
     user-select: none;
 }
+.info-item:nth-child(1) > .info-btn {
+    left: calc(50% - ((var(--info-button-width) * 1.5) + var(--info-button-gap)));
+}
 
+.info-item:nth-child(2) > .info-btn {
+    left: calc(50% - (var(--info-button-width) / 2));
+}
+
+.info-item:nth-child(3) > .info-btn {
+    left: calc(50% + ((var(--info-button-width) / 2) + var(--info-button-gap)));
+}
 .info-btn:hover {
     background: #f5f5f5;
     transform: translateY(-1px);
 }
 
-.info-item[open] > .info-btn {
-    color: #fff;
-    background: #111;
-}
 
 .info-item[open] > .info-panel {
     grid-column: 1 / -1;
@@ -423,46 +419,25 @@ body {
     }
 
     .info-buttons {
-        grid-template-columns: 1fr;
-        row-gap: 10px;
+        padding-top: 0;
     }
 
-    .info-item:nth-child(1) > .info-btn {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-    .info-item:nth-child(2) > .info-btn {
-        grid-column: 1;
-        grid-row: 2;
-    }
-
-    .info-item:nth-child(3) > .info-btn {
-        grid-column: 1;
-        grid-row: 3;
-    }
-
-    .info-item:nth-child(1)[open] > .info-panel {
-        grid-column: 1;
-        grid-row: 2;
-    }
-
-    .info-item:nth-child(2)[open] > .info-panel {
-        grid-column: 1;
-        grid-row: 3;
-    }
-
-    .info-item:nth-child(3)[open] > .info-panel {
-        grid-column: 1;
-        grid-row: 4;
+    /*
+       On mobile, buttons become a regular vertical accordion.
+    */
+    .info-item {
+        width: 100%;
+        margin-bottom: 10px;
     }
 
     .info-btn {
+        position: static;
         width: 100%;
     }
 
     .info-panel {
         width: 100%;
+        margin: 10px 0 0;
         padding: 18px;
     }
 
