@@ -109,7 +109,63 @@
 </div>
 <footer align="center">&copy;<CurrentYear> NoShellGames</footer>
 <script>
+const examples = {
+        harmless: `# Harmless demo script
+$serviceName = "Spooler"
+$service = Get-Service -Name $serviceName -ErrorAction SilentlyContinue
+
+if ($service) {
+    Write-Host "Service found: $($service.DisplayName)"
+} else {
+    Write-Host "Service not found."
+}`,
+
+        encoded: `# Encoded string demo
+# This decodes harmless demo text only.
+$encoded = "V3JpdGUtSG9zdCAnSGVsbG8gZnJvbSBOb1NoZWxsR2FtZXMgZGVtbyc="
+$decoded = [System.Text.Encoding]::UTF8.GetString(
+    [System.Convert]::FromBase64String($encoded)
+)
+
+Write-Host $decoded`,
+
+        webrequest: `# Web request demo
+# This demonstrates a web request pattern without executing downloaded content.
+$url = "https://example.com"
+$response = Invoke-WebRequest -Uri $url -UseBasicParsing
+
+Write-Host "Status code: $($response.StatusCode)"`,
+
+        obfuscation: `# Obfuscation-style demo
+# This is intentionally awkward-looking code for analyzer testing.
+$a1x9 = "Write"
+$b2y8 = "Host"
+$c3z7 = "NoShellGames demo"
+
+$commandName = "$a1x9-$b2y8"
+& $commandName $c3z7`
+    };
 const button = document.getElementById("analyzeBtn");
+document.querySelectorAll(".example-btn").forEach((exampleButton) => {
+        exampleButton.addEventListener("click", () => {
+            const exampleName = exampleButton.dataset.example;
+            const exampleScript = examples[exampleName];
+
+            if (!exampleScript || !scriptInput) {
+                return;
+            }
+
+            scriptInput.value = exampleScript;
+            scriptInput.focus();
+            scriptInput.setSelectionRange(0, 0);
+
+            scriptInput.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        });
+    });
+
 document.getElementById("search-form").addEventListener("submit", async function(e) {
     e.preventDefault(); 
 
