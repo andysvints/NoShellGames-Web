@@ -114,11 +114,7 @@ const examples = {
 $serviceName = "Spooler"
 $service = Get-Service -Name $serviceName -ErrorAction SilentlyContinue
 
-if ($service) {
-    Write-Host "Service found: $($service.DisplayName)"
-} else {
-    Write-Host "Service not found."
-}`,
+$service ? $(Write-Host "Service found: $($service.DisplayName)") : $(Write-Host "Service not found.")`,
 
         encoded: `# Encoded string demo
 # This decodes harmless demo text only.
@@ -137,13 +133,16 @@ $response = Invoke-WebRequest -Uri $url -UseBasicParsing
 Write-Host "Status code: $($response.StatusCode)"`,
 
         obfuscation: `# Obfuscation-style demo
-# This is intentionally awkward-looking code for analyzer testing.
-$a1x9 = "Write"
-$b2y8 = "Host"
-$c3z7 = "NoShellGames demo"
+$O0O0O0 = -join ([char[]](87,114,105,116,101))
+$lI1IlI = -join ([char[]](72,111,115,116))
 
-$commandName = "$a1x9-$b2y8"
-& $commandName $c3z7`
+$Il1O0I = -join ([char[]](78,111,83,104,101,108,108,71,97,109,101,115))
+$O1lI0O = -join ([char[]](100,101,109,111))
+
+$OIl1l0 = $O0O0O0 + [char]45 + $lI1IlI
+$lIl0O1 = $Il1O0I + [char]32 + $O1lI0O
+
+& $OIl1l0 $lIl0O1`
     };
 const button = document.getElementById("analyzeBtn");
 document.querySelectorAll(".example-btn").forEach((exampleButton) => {
