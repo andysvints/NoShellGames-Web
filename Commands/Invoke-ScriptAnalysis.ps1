@@ -41,6 +41,12 @@ function Invoke-ScriptAnalysis
             </p>
         </div>
     </div>
+    </div><div id="resultCard" class="result-card"> 
+         <p class="info-note"> Free checks are limited. Need higher limits, report export or API access?</p>
+         <a class="early-access-link" href="https://mailchi.mp/bccc5d23d447/nsg-earlyaccess" target="_blank" rel="noopener noreferrer">
+               Request Early Access
+          </a>
+     </div>
 "@
             if($apiResponse){
                 $htmlResponse=$HTMLTemplate.Replace('<RiskScore>',$apiResponse.risk_score)
