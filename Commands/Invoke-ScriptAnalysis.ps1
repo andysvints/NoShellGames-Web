@@ -46,7 +46,6 @@ function Invoke-ScriptAnalysis
          <a class="early-access-link" href="https://mailchi.mp/bccc5d23d447/nsg-earlyaccess" target="_blank" rel="noopener noreferrer">
                Request Early Access
           </a>
-     </div>
 "@
             if($apiResponse){
                 $htmlResponse=$HTMLTemplate.Replace('<RiskScore>',$apiResponse.risk_score)
