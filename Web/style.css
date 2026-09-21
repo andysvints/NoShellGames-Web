@@ -446,3 +446,105 @@ body {
         flex-direction: column;
     }
 }
+
+/* NoShellGames assessment/0.1 result presentation */
+.score-denominator {
+    font-size: 16px;
+    font-weight: 500;
+    color: #6b7280;
+}
+.risk-badge.critical, .finding-severity.critical {
+    background: #731b2b;
+    color: #fff;
+}
+.risk-badge.unknown { background: #e5e7eb; color: #374151; }
+.result-muted { color: #687487; font-size: 13px; line-height: 1.5; }
+.result-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.result-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 12px;
+    border-radius: 10px;
+    background: #f2f4f8;
+}
+.result-stat strong { font-size: 22px; }
+.result-stat span { color: #626b79; font-size: 12px; }
+.analysis-status {
+    padding: 12px 14px;
+    background: #e8f7ee;
+    color: #116329;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+.analysis-status.partial { background: #fff4dd; color: #805000; }
+.analysis-status p { margin: 4px 0 0; }
+.finding-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #fff;
+    padding: 16px;
+    margin-top: 12px;
+    overflow-wrap: anywhere;
+}
+.finding-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+.finding-severity {
+    padding: 5px 9px;
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .025em;
+}
+.finding-severity.high { background: #fde8e8; color: #b42318; }
+.finding-severity.medium { background: #fff4dd; color: #8a5a00; }
+.finding-severity.low { background: #e8f7ee; color: #116329; }
+.finding-severity.unknown { background: #e5e7eb; color: #374151; }
+.finding-contribution { font-size: 12px; color: #626b79; }
+.finding-card h4 { margin: 12px 0 8px; font-size: 16px; line-height: 1.4; }
+.finding-card p { margin: 8px 0; line-height: 1.5; font-size: 14px; }
+.finding-recommendation { border-left: 3px solid #d8dde5; padding-left: 10px; }
+.evidence-details, .assessment-meta, .diagnostics-details {
+    margin-top: 14px;
+    padding: 10px 12px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+.evidence-details summary, .assessment-meta summary, .diagnostics-details summary {
+    cursor: pointer;
+    font-weight: 700;
+}
+.evidence-details p, .assessment-meta p, .diagnostics-details p {
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+.evidence-ids { font-family: Consolas, "Courier New", monospace; font-size: 12px !important; }
+.early-access-panel {
+    margin-top: 24px;
+    padding: 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #fff;
+}
+.site-footer { text-align: center; color: #6b7280; padding: 12px 0 24px; }
+@media (max-width: 640px) {
+    .result-card { padding: 16px; }
+    .result-stats { gap: 6px; }
+    .result-stat { padding: 9px; }
+    .result-stat strong { font-size: 18px; }
+    .finding-card { padding: 12px; }
+}
