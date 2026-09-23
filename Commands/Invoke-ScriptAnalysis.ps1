@@ -60,7 +60,7 @@ function Invoke-ScriptAnalysis
                         $Findings+="<li>"+$($f.description)+"</li>"
                     }
                     $TopFindings+="</ul></div>"
-                    $htmlResponse=$htmlResponse.Replace('<TopFindings>',$TopFindings)
+                    $htmlResponse=$htmlResponse.Replace('<TopFindings>',$Findings)
                 }
                 $htmlResponse=$htmlResponse.Replace('<Recommendation>',$apiResponse.recommendation)
             }
