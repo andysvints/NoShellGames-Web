@@ -21,7 +21,7 @@ function Invoke-ScriptAnalysis
             connect-AzAccount -Subscription "094200e5-c0b6-4890-aeec-5a21a93a690e" -Identity | Out-Null
             $KeyVaultName="NoShellGames-KV"
             $apiKey=Get-AzKeyVaultSecret -VaultName $KeyVaultName -Name "NoShellGamesAPIKey" -AsPlainText
-            $apiUrl = "https://noshellgames.azure-api.net/noshellgames/AnalyzeScript?subscription-key=$apiKey"
+            $apiUrl = "https://noshellgames.azure-api.net/noshellgames/Analyze-Script?subscription-key=$apiKey"
             $apiResponse = Invoke-RestMethod -Uri $apiUrl -Body $Text -Method POST
             #$HTMLTemplate=Get-Content $(Join-Path -Path "/usr/local/share/powershell/Modules/NoShellGames-Web/Web" -ChildPath "index.html") -Raw
             #$HTMLResults=[System.Text.StringBuilder]::new()
@@ -48,16 +48,16 @@ function Invoke-ScriptAnalysis
           </a>
 "@
             if($apiResponse){
-                $htmlResponse=$HTMLTemplate.Replace('<RiskScore>',$apiResponse.risk_score)
-                $htmlResponse=$htmlResponse.Replace('<RiskLevel>',$apiResponse.risk_level)
+                $htmlResponse=$HTMLTemplate.Replace('<RiskScore>',$apiResponse.scoring.score)
+                $htmlResponse=$htmlResponse.Replace('<RiskLevel>',$apiResponse.scoring.risk)
                 if($apiResponse.top_findings){
-                    $TopFindings=@"
+                    $Findings=@"
                     <div class="result-section">
-            <h3>Top Findings</h3>
+            <h3>Security Findings</h3>
             <ul id="findingsList" class="findings-list">          
 "@
-                    foreach($f in $apiResponse.top_findings){
-                        $TopFindings+="<li>"+$f+"</li>"
+                    foreach($f in $apiResponse.findings){
+                        $Findings+="<li>"+$($f.description)+"</li>"
                     }
                     $TopFindings+="</ul></div>"
                     $htmlResponse=$htmlResponse.Replace('<TopFindings>',$TopFindings)
