@@ -188,6 +188,7 @@ document.getElementById("search-form").addEventListener("submit", async function
         const html = await response.text();
         resultCard.innerHTML = html;
         resultCard.classList.remove("hidden");
+        resultCard.scrollIntoView({ behavior: "smooth", block: "start" });
 
     } catch (err) {
         resultCard.innerHTML = "<p style='color:red'>Error analyzing script</p>";
