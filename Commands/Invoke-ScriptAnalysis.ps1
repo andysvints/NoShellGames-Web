@@ -34,12 +34,6 @@ function Invoke-ScriptAnalysis
             <div class="risk-badge <RiskLevel>" id="riskLevel"><RiskLevel></div>
         </div>
         <TopFindings>
-        <div class="result-section">
-            <h3>Recommendation</h3>
-            <p id="recommendationText" class="recommendation <RiskLevel>">
-                <Recommendation>
-            </p>
-        </div>
     </div>
     </div><div id="resultCard" class="result-card"> 
          <p class="info-note"> Free checks are limited. Need higher limits, report export or API access?</p>
