@@ -60,7 +60,7 @@ function Invoke-ScriptAnalysis
                                         @{ Name = 'Behaviors'; Value = $apiResponse.assessment.behaviorCount },
                                         @{ Name = 'Capabilities'; Value = $apiResponse.capabilityCount }
                                     )){
-                          $AssessmentStats+=$("<div class=`"result-stat`"><strong>$($s.Value)</strong><span>$($s.Name)</span></div>"
+                          $AssessmentStats+=$("<div class=`"result-stat`"><strong>$($s.Value)</strong><span>$($s.Name)</span></div>")
                     }
                 $AssessmentStats+="</div>"
                 }
