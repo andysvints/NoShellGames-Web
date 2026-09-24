@@ -50,7 +50,21 @@ function Invoke-ScriptAnalysis
             if($apiResponse){
                 $htmlResponse=$HTMLTemplate.Replace('<RiskScore>',$apiResponse.scoring.score)
                 $htmlResponse=$htmlResponse.Replace('<RiskLevel>',$apiResponse.scoring.risk)
-                if($apiResponse.top_findings){
+                if($apiResponse.assessment){
+                    $AssessmentStats=@"
+                    <div class="result-stats">
+
+"@
+                    foreach($s in @(
+                                        @{ Name = 'Findings'; Value = $apiResponse.uniqueFindingCount },
+                                        @{ Name = 'Behaviors'; Value = $apiResponse.behaviorCount },
+                                        @{ Name = 'Capabilities'; Value = $apiResponse.capabilityCount }
+                                    )){
+                          $AssessmentStats+=$('<div class="result-stat"><strong>{0}</strong><span>{1}</span></div>' -f (& $encode $stat.Value), $stat.Name )
+                    }
+                $AssessmentStats+="</div>"
+                }
+                if($apiResponse.findings){
                     $Findings=@"
                     <div class="result-section">
             <h3>Security Findings</h3>
@@ -62,7 +76,7 @@ function Invoke-ScriptAnalysis
                     $TopFindings+="</ul></div>"
                     $htmlResponse=$htmlResponse.Replace('<TopFindings>',$Findings)
                 }
-                $htmlResponse=$htmlResponse.Replace('<Recommendation>',$apiResponse.recommendation)
+              #  $htmlResponse=$htmlResponse.Replace('<Recommendation>',$apiResponse.recommendation)
             }
 
         
