@@ -33,7 +33,9 @@ function Invoke-ScriptAnalysis
             </div>
             <div class="risk-badge <RiskLevel>" id="riskLevel"><RiskLevel></div>
         </div>
-        <TopFindings>
+        <Recommendation>
+        <AssessmentStats>
+        <Findings>
     </div>
     </div><div id="resultCard" class="result-card"> 
          <p class="info-note"> Free checks are limited. Need higher limits, report export or API access?</p>
@@ -68,8 +70,9 @@ function Invoke-ScriptAnalysis
                         $Findings+="<li>"+$($f.description)+"</li>"
                     }
                     $TopFindings+="</ul></div>"
-                    $htmlResponse=$htmlResponse.Replace('<TopFindings>',$Findings)
+                    $htmlResponse=$htmlResponse.Replace('<Findings>',$Findings)
                 }
+               $htmlResponse=$htmlResponse.Replace('<AssessmentStats>',$AssessmentStats)
               #  $htmlResponse=$htmlResponse.Replace('<Recommendation>',$apiResponse.recommendation)
             }
 
