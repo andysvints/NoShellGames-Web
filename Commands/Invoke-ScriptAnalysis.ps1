@@ -54,7 +54,7 @@ function Invoke-ScriptAnalysis
                     foreach($s in @(
                                         @{ Name = 'Findings'; Value = $apiResponse.assessment.uniqueFindingCount },
                                         @{ Name = 'Behaviors'; Value = $apiResponse.assessment.behaviorCount },
-                                        @{ Name = 'Capabilities'; Value = $apiResponse.capabilityCount }
+                                        @{ Name = 'Capabilities'; Value = $apiResponse.assessment.capabilityCount }
                                     )){
                           $AssessmentStats+=$("<div class=`"result-stat`"><strong>$($s.Value)</strong><span>$($s.Name)</span></div>")
                     }
