@@ -78,9 +78,10 @@
 
                         <div class="example-list">
                             <button type="button" class="example-btn" data-example="harmless">Harmless script</button>
-                            <button type="button" class="example-btn" data-example="encoded">Encoded string demo</button>
+                            <button type="button" class="example-btn" data-example="encoded">Encoded content -> execution</button>
                             <button type="button" class="example-btn" data-example="webrequest">Web request demo</button>
                             <button type="button" class="example-btn" data-example="obfuscation">Obfuscation demo</button>
+                             
                         </div>
 
                         <p class="info-note">
@@ -116,14 +117,17 @@ $service = Get-Service -Name $serviceName -ErrorAction SilentlyContinue
 
 $service ? $(Write-Host "Service found: $($service.DisplayName)") : $(Write-Host "Service not found.")`,
 
-        encoded: `# Encoded string demo
-# This decodes harmless demo text only.
-$encoded = "V3JpdGUtSG9zdCAnSGVsbG8gZnJvbSBOb1NoZWxsR2FtZXMgZGVtbyc="
-$decoded = [System.Text.Encoding]::UTF8.GetString(
-    [System.Convert]::FromBase64String($encoded)
-)
+        encoded: `# Encoded content -> dynamic execution
+# Analysis-only demo. The function is never invoked.
 
-Write-Host $decoded`,
+function Invoke-NsgEncodedDemo {
+    $encoded = "V3JpdGUtSG9zdCAnSGVsbG8gZnJvbSBOb1NoZWxsR2FtZXMgZGVtbyc="
+
+    $bytes = [Convert]::FromBase64String($encoded)
+    $decoded = [Text.Encoding]::UTF8.GetString($bytes)
+
+    Invoke-Expression $decoded
+}`,
 
         webrequest: `# Web request demo
 # This demonstrates a web request pattern without executing downloaded content.
